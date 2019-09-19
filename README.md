@@ -15,7 +15,12 @@ This project is built with vscode.
 Run the following command:
 
 `dotnet restore`
-`dotnet run <FilePath>` or `dotnet run` if file is added to input folder, and the path in the code is updated to your file.
+
+`dotnet run <FilePath>`
+
+or
+
+`dotnet run` if file is added to input folder, and the path in the code is updated to your file.
 
 ## Solution components
 
