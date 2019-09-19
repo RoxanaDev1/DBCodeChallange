@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace DBCodeChallange
+namespace DBCodeChallenge
 {
     public class DirectedGraph
     {
