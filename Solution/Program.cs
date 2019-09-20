@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DBCodeChallenge
+namespace Solution
 {
     class Program
     {
         static void Main(string[] args)
         {
-            string fileLocation = args != null ? args[0] : "./src/input/input1.txt";
+            string fileLocation = args.Length > 0 ? args[0] : "./src/input/input1.txt";
             List<Node[]> inputMatrix = Utils.CreateInputMatrix(fileLocation);
 
             DirectedGraph myGraph = new DirectedGraph(inputMatrix);
