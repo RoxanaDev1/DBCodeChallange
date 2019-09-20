@@ -7,7 +7,7 @@ namespace DBCodeChallenge
     {
         static void Main(string[] args)
         {
-            string fileLocation = args[0].Length == 0 ? "./src/input/input1.txt" : args[0];
+            string fileLocation = (args != null && args[0].Length > 0) ? "./src/input/input1.txt" : args[0];
             List<Node[]> inputMatrix = Utils.CreateInputMatrix(fileLocation);
 
             DirectedGraph myGraph = new DirectedGraph(inputMatrix);
