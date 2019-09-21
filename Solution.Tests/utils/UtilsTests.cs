@@ -134,5 +134,42 @@ namespace Solution.Tests
             }
         }
     }
+
+    [TestClass]
+    public class GetMaxSum_UtilsTests
+    {
+        [TestMethod]
+        public void GetMaxSum_ReturnsTheCorrectMaxSum()
+        {
+            List<List<Node>> foundPaths = new List<List<Node>>{
+                new List<Node>{ new Node(0), new Node(1), new Node(2) },
+                new List<Node>{ new Node(5), new Node(6), new Node(7) },
+                new List<Node>{ new Node(10), new Node(20), new Node(30) }};
+            decimal expctedSum = 60;
+
+            Assert.AreEqual(expctedSum, Utils.GetMaxSum(foundPaths));
+        }
+
+        [TestMethod]
+        public void GetMaxSum_ReturnsTheCorrectMaxSumEvenIfTwoPathsHaveSameSum()
+        {
+            List<List<Node>> foundPaths = new List<List<Node>>{
+                new List<Node>{ new Node(0), new Node(1), new Node(2) },
+                new List<Node>{ new Node(20), new Node(20), new Node(20) },
+                new List<Node>{ new Node(10), new Node(20), new Node(30) }};
+            decimal expctedSum = 60;
+
+            Assert.AreEqual(expctedSum, Utils.GetMaxSum(foundPaths));
+        }
+
+        [TestMethod]
+        public void GetMaxSum_ReturnsZeroIfNoPathIsFound()
+        {
+            List<List<Node>> foundPaths = new List<List<Node>> { };
+            decimal expctedSum = 0;
+
+            Assert.AreEqual(expctedSum, Utils.GetMaxSum(foundPaths));
+        }
+    }
 }
 
