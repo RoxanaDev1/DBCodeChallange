@@ -171,5 +171,47 @@ namespace Solution.Tests
             Assert.AreEqual(expctedSum, Utils.GetMaxSum(foundPaths));
         }
     }
+
+    [TestClass]
+    public class GetMaxPath_UtilsTests
+    {
+        [TestMethod]
+        public void GetMaxPath_ReturnsTheCorrectMaxPath()
+        {
+            List<List<Node>> foundPaths = new List<List<Node>>{
+                new List<Node>{ new Node(0), new Node(1), new Node(2) },
+                new List<Node>{ new Node(5), new Node(6), new Node(7) },
+                new List<Node>{ new Node(10), new Node(20), new Node(30) }};
+            List<Node> maxPath = Utils.GetMaxPath(foundPaths);
+
+            for (int i = 0; i < maxPath.Count; i++)
+            {
+                Assert.AreEqual(maxPath[i].weight, foundPaths[2][i].weight);
+            }
+        }
+
+        [TestMethod]
+        public void GetMaxPath_ReturnsTheFirstMaxPathEvenIfTwoPathsHaveSameSum()
+        {
+            List<List<Node>> foundPaths = new List<List<Node>>{
+                new List<Node>{ new Node(0), new Node(1), new Node(2) },
+                new List<Node>{ new Node(20), new Node(20), new Node(20) },
+                new List<Node>{ new Node(10), new Node(20), new Node(30) }};
+            List<Node> maxPath = Utils.GetMaxPath(foundPaths);
+
+            for (int i = 0; i < maxPath.Count; i++)
+            {
+                Assert.AreEqual(maxPath[i].weight, foundPaths[1][i].weight);
+            }
+        }
+
+        [TestMethod]
+        public void GetMaxPath_ReturnEmptyListIfNoPathIsFound()
+        {
+            List<List<Node>> foundPaths = new List<List<Node>> { };
+
+            Assert.AreEqual(0, Utils.GetMaxPath(foundPaths).Count);
+        }
+    }
 }
 
