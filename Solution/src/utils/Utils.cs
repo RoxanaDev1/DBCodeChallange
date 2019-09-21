@@ -36,11 +36,11 @@ public static class Utils
         }
         catch (FileNotFoundException e)
         {
-            throw new System.Exception($"File not found. Exception {e}");
+            throw new FileNotFoundException($"File not found. Exception {e}");
         }
         catch (ArgumentException e)
         {
-            throw new System.Exception($"File path cannot be empty. Exception {e}");
+            throw new ArgumentException($"File path cannot be empty. Exception {e}");
         }
         catch (Exception e)
         {
