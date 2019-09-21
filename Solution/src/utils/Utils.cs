@@ -61,13 +61,20 @@ public static class Utils
         {
             return new Node[0];
         }
-        int[] arr = Array.ConvertAll(line.Split(" "), s => int.Parse(s));
-        Node[] nodeLine = new Node[arr.Length];
-        for (int i = 0; i < arr.Length; i++)
+        try
         {
-            nodeLine[i] = new Node(arr[i]);
+            int[] arr = Array.ConvertAll(line.Split(" "), s => int.Parse(s));
+            Node[] nodeLine = new Node[arr.Length];
+            for (int i = 0; i < arr.Length; i++)
+            {
+                nodeLine[i] = new Node(arr[i]);
+            }
+            return nodeLine;
         }
-        return nodeLine;
+        catch (Exception e)
+        {
+            throw new System.Exception($"Line has invalid input, cannot convert to integer: {e.Message}");
+        }
     }
 
     /// <summary>
