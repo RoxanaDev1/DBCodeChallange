@@ -81,3 +81,4 @@ Using some util functions for list manipulation for finding the sum and path of 
 2. As described in the problem example a node can have up 2 children, this can also be changed to have a const which describes the amount of neighbors. For example it can be 3.
 3. I covered the majority of things in the code with the tests, I think there can be still some extra added.
 4. I could also use a list of list of nodes and not a list of array of nodes - this way I could write more for each rather then using the good old for loop.
+5. Remove the last comma on printing the path :)

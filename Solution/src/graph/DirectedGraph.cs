@@ -113,8 +113,6 @@ namespace Solution
             {
                 List<Node> copyList = new List<Node>(paths);
                 savePath.Add(copyList);
-                paths.ForEach(i => Console.Write("{0},", i.weight));
-                Console.WriteLine($"PATH FOUND {paths.Count} {savePath.Count}!");
                 //After full path found, remove the node to make place for another path.
                 paths.Remove(node);
             }
