@@ -1,26 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Solution
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             string fileLocation = args.Length > 0 ? args[0] : "./Solution/src/input/input2.txt";
-            List<Node[]> inputMatrix = Utils.CreateInputMatrix(fileLocation);
+            Program.RunSolution(fileLocation);
+        }
 
-            DirectedGraph myGraph = new DirectedGraph();
-            myGraph.BuildGraph(inputMatrix);
+        public static void RunSolution(string fileLocation)
+        {
+            try
+            {
+                List<Node[]> inputMatrix = Utils.CreateInputMatrix(fileLocation);
 
-            List<List<Node>> foundPaths = new List<List<Node>>();
-            myGraph.SearchMaxPaths(myGraph.getRootNode(), new List<Node>(), foundPaths);
+                DirectedGraph myGraph = new DirectedGraph();
+                myGraph.BuildGraph(inputMatrix);
 
-            decimal maxSum = Utils.GetMaxSum(foundPaths);
+                List<List<Node>> foundPaths = new List<List<Node>>();
+                myGraph.SearchMaxPaths(myGraph.getRootNode(), new List<Node>(), foundPaths);
 
-            Console.WriteLine($"Max sum: {maxSum}");
-            Console.Write($"Path: ");
-            Utils.GetMaxPath(foundPaths).ForEach(node => Console.Write($"{node.weight},"));
+                decimal maxSum = Utils.GetMaxSum(foundPaths);
+
+                Console.WriteLine($"Max sum: {maxSum}");
+                Console.Write($"Path: ");
+                Utils.GetMaxPath(foundPaths).ForEach(node => Console.Write($"{node.weight},"));
+            }
+            catch (FileNotFoundException e)
+            {
+                Console.WriteLine($"File not found. Exception {e}");
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine($"File path cannot be empty. Exception {e}");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Exception thrown. Exception {e.Message}");
+            }
         }
     }
 }
