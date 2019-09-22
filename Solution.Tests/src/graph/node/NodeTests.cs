@@ -8,7 +8,7 @@ namespace Solution.Tests
     {
 
         [TestMethod]
-        public void NodeTests_CreateEmptyNode()
+        public void NodeTests_Create_EmptyNode()
         {
             Node testNode = new Node();
             Assert.AreEqual(0, testNode.weight);
@@ -18,7 +18,7 @@ namespace Solution.Tests
         }
 
         [TestMethod]
-        public void NodeTests_CreateNodeWithWeight()
+        public void NodeTests_Create_NodeWithWeight()
         {
             int weight = 20;
             Node testNode = new Node(weight);
@@ -29,7 +29,7 @@ namespace Solution.Tests
         }
 
         [TestMethod]
-        public void NodeTests_AddOddNeighborToEvenNode()
+        public void NodeTests_AddNeighbor_OddToEvenNode()
         {
             Node evenNode = new Node(20);
             Node oddNode = new Node(31);
@@ -38,7 +38,7 @@ namespace Solution.Tests
         }
 
         [TestMethod]
-        public void NodeTests_AddOddNeighborToOddNode()
+        public void NodeTests_AdddNeighbor_OddToOddNode()
         {
             Node oddNode = new Node(21);
             Node anotherOddNode = new Node(31);
@@ -47,7 +47,7 @@ namespace Solution.Tests
         }
 
         [TestMethod]
-        public void NodeTests_AddEvenNeighborToOddNode()
+        public void NodeTests_AddNeighbor_EvenToOddNode()
         {
             Node evenNode = new Node(20);
             Node oddNode = new Node(31);
@@ -56,7 +56,7 @@ namespace Solution.Tests
         }
 
         [TestMethod]
-        public void NodeTests_AddEvenNeighborToEvenNode()
+        public void NodeTests_AddNeighbor_EvenToEvenNode()
         {
             Node evenNode = new Node(20);
             Node anotherEvenNode = new Node(30);

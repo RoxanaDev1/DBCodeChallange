@@ -18,7 +18,7 @@ namespace Solution.Tests
         }
 
         [TestMethod]
-        public void DirectedGraphTests_BuildGraphFromValidInputMatrix()
+        public void DirectedGraphTests_BuildGraph_FromValidInputMatrix()
         {
             List<Node[]> inputMatrix = new List<Node[]>{
                 new Node[]{new Node(0)},
@@ -31,7 +31,7 @@ namespace Solution.Tests
         }
 
         [TestMethod]
-        public void DirectedGraphTests_BuildGraphFromInValidInputMatrix()
+        public void DirectedGraphTests_BuildGraph_FromInValidInputMatrix()
         {
             List<Node[]> inputMatrix = new List<Node[]>{
                 new Node[]{new Node(0)},
@@ -50,26 +50,26 @@ namespace Solution.Tests
         }
 
         [TestMethod]
-        public void DirectedGraphTests_getRootNodeWhereNodeExists()
+        public void DirectedGraphTests_GetRootNode_WhereNodeExists()
         {
             List<Node[]> inputMatrix = new List<Node[]>{
                 new Node[]{new Node(0)}};
             DirectedGraph myGraph = new DirectedGraph();
             myGraph.BuildGraph(inputMatrix);
-            Assert.IsNotNull(myGraph.getRootNode());
+            Assert.IsNotNull(myGraph.GetRootNode());
         }
 
         [TestMethod]
-        public void DirectedGraphTests_getRootNodeWhereNodeNotExists()
+        public void DirectedGraphTests_GetRootNode_WhereNodeNotExists()
         {
             List<Node[]> inputMatrix = new List<Node[]>();
             DirectedGraph myGraph = new DirectedGraph();
             myGraph.BuildGraph(inputMatrix);
-            Assert.IsNull(myGraph.getRootNode());
+            Assert.IsNull(myGraph.GetRootNode());
         }
 
         [TestMethod]
-        public void DirectedGraphTests_SearchMaxPathsWhereSuchPathIsFound()
+        public void DirectedGraphTests_SearchMaxPaths_WhereSuchPathIsFound()
         {
             List<Node[]> inputMatrix = new List<Node[]>{
                 new Node[]{new Node(0)},
@@ -84,7 +84,7 @@ namespace Solution.Tests
         }
 
         [TestMethod]
-        public void DirectedGraphTests_SearchMaxPathsWhereSuchPathIsNotFound()
+        public void DirectedGraphTests_SearchMaxPaths_WhereSuchPathIsNotFound()
         {
             List<Node[]> inputMatrix = new List<Node[]>{
                 new Node[]{new Node(0)},
@@ -98,18 +98,18 @@ namespace Solution.Tests
         }
 
         [TestMethod]
-        public void DirectedGraphTests_SearchMaxPathsWhereGraphIsEmpty()
+        public void DirectedGraphTests_SearchMaxPaths_WhereGraphIsEmpty()
         {
             List<Node[]> inputMatrix = new List<Node[]>();
             DirectedGraph myGraph = new DirectedGraph();
             myGraph.BuildGraph(inputMatrix);
             List<List<Node>> foundPaths = new List<List<Node>>();
-            myGraph.SearchMaxPaths(myGraph.getRootNode(), new List<Node>(), foundPaths);
+            myGraph.SearchMaxPaths(myGraph.GetRootNode(), new List<Node>(), foundPaths);
             Assert.AreEqual(0, foundPaths.Count);
         }
 
         [TestMethod]
-        public void DirectedGraphTests_SearchMaxPathsWhereSuchPatInOneLineGraph()
+        public void DirectedGraphTests_SearchMaxPaths_WhereSuchPatInOneLineGraph()
         {
             List<Node[]> inputMatrix = new List<Node[]>{
                 new Node[]{new Node(0)}};

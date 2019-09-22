@@ -22,7 +22,7 @@ namespace Solution
                 myGraph.BuildGraph(inputMatrix);
 
                 List<List<Node>> foundPaths = new List<List<Node>>();
-                myGraph.SearchMaxPaths(myGraph.getRootNode(), new List<Node>(), foundPaths);
+                myGraph.SearchMaxPaths(myGraph.GetRootNode(), new List<Node>(), foundPaths);
 
                 decimal maxSum = Utils.GetMaxSum(foundPaths);
 

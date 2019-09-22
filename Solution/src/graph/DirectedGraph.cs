@@ -78,7 +78,7 @@ namespace Solution
         /// <returns>
         /// The node which is the root of the graph, or null.
         /// </returns>
-        public Node getRootNode()
+        public Node GetRootNode()
         {
             if (this.nodes.Count == 0)
             {
