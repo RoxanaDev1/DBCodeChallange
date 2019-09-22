@@ -12,7 +12,7 @@ namespace Solution.Tests
         [TestMethod]
         public void CreateInputMatrix_CreatesAnInputMatrixForValidInput()
         {
-            string fileLocation = "../../../input/input1.txt";
+            string fileLocation = "../../../src/input/input1.txt";
             int expectedMatrixLines = 3;
             List<Node[]> inputMatrix = Utils.CreateInputMatrix(fileLocation);
             Assert.AreEqual(inputMatrix.Count, expectedMatrixLines);
@@ -24,7 +24,7 @@ namespace Solution.Tests
         [TestMethod]
         public void CreateInputMatrix_ThrowExceptionForEmptyInput()
         {
-            string fileLocation = "../../../input/input2.txt";
+            string fileLocation = "../../../src/input/input2.txt";
             try
             {
                 List<Node[]> inputMatrix = Utils.CreateInputMatrix(fileLocation);
@@ -69,7 +69,7 @@ namespace Solution.Tests
         [TestMethod]
         public void CreateInputMatrix_CatchesExceptionForInvalidLineInput()
         {
-            string fileLocation = "../../../input/input2.txt";
+            string fileLocation = "../../../src/input/input2.txt";
             try
             {
                 List<Node[]> inputMatrix = Utils.CreateInputMatrix(fileLocation);
@@ -84,7 +84,7 @@ namespace Solution.Tests
         [TestMethod]
         public void CreateInputMatrix_HandlesSpacesInEndOfLines()
         {
-            string fileLocation = "../../../input/input3.txt";
+            string fileLocation = "../../../src/input/input3.txt";
             try
             {
                 List<Node[]> inputMatrix = Utils.CreateInputMatrix(fileLocation);
