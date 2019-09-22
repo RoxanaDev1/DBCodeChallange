@@ -46,32 +46,21 @@ namespace Solution
         }
 
         /// <summary>
-        /// Constructor that accepts weight and neighbors.
-        /// </summary>
-        /// <param name="neighbors">A list of neighbor nodes.</param>
-        /// <param name="weight">An integer number that defines the node weight.</param>
-        /// <returns>
-        /// A node with the given weight and an initilized list with the given neighbors.
-        /// </returns>
-        public Node(Node[] neighbors, int weight)
-        {
-            this.neighbors = new List<Node>(neighbors);
-            this.weight = weight;
-            this.id = Guid.NewGuid();
-            this.isEven = weight % 2 == 0;
-        }
-
-        /// <summary>
         /// A method to add a new neighbor for this node. The method will only add the new node neigbor if the even/odd rules are kept.
         /// </summary>
         /// <param name="potentialNeighbor">The wanted node to be added.</param>
-        public void AddNeighbor(Node potentialNeighbor)
+        /// <returns>
+        /// Returns a true or false if the addition is successful or not.
+        /// </returns>
+        public bool AddNeighbor(Node potentialNeighbor)
         {
             bool isNeighborEven = potentialNeighbor.weight % 2 == 0;
             if ((this.isEven && !isNeighborEven) || (!this.isEven && isNeighborEven))
             {
                 this.neighbors.Add(potentialNeighbor);
+                return true;
             }
+            return false;
         }
     }
 }
