@@ -23,14 +23,18 @@ namespace Solution
         }
 
         /// <summary>
-        /// Constructor which accepts a list of node arrays called inputMatrix.
+        /// Function which accepts a list of node arrays called inputMatrix.
         /// </summary>
         /// <param name="inputMatrix">A "2D" representation of the triagle input</param>
         /// <returns>
         /// A graph representation of the the input matrix given.
         /// </returns>
-        public DirectedGraph(List<Node[]> inputMatrix)
+        public void BuildGraph(List<Node[]> inputMatrix)
         {
+            if (!Utils.isValidInputMatrix(inputMatrix))
+            {
+                throw new Exception("Build graph could not build as input matrix is invalid");
+            }
             this.nodes = new List<Node>();
             this.maxLength = inputMatrix.Count;
             int listIndex = 1;
@@ -56,18 +60,6 @@ namespace Solution
         }
 
         /// <summary>
-        /// A method which returns the list of neighboring nodes for a given node.
-        /// </summary>
-        /// <param name="currentNode">The node we wish to get the neighbors for</param>
-        /// <returns>
-        /// A list of the neighboring nodes.
-        /// </returns>
-        public List<Node> GetNeighborNodes(Node currentNode)
-        {
-            return this.nodes.Find(node => currentNode.id == node.id).neighbors;
-        }
-
-        /// <summary>
         /// A method to pring a short overview of this graph.
         /// </summary>
         public void PrintGraph()
@@ -75,28 +67,45 @@ namespace Solution
             this.nodes.ForEach(node =>
             {
                 Console.WriteLine($" I have {node.neighbors.Count} neighbours, my weight is {node.weight}");
-                node.neighbors.ForEach(i => Console.Write($"i.weight,"));
+                node.neighbors.ForEach(i => Console.Write($"{i.weight},"));
+                Console.WriteLine();
             });
         }
 
+        /// <summary>
+        /// Function which returns the root node of the graph based on its triangle input.
+        /// </summary>
+        /// <returns>
+        /// The node which is the root of the graph, or null.
+        /// </returns>
+        public Node getRootNode()
+        {
+            if (this.nodes.Count == 0)
+            {
+                return null;
+            }
+            return this.nodes[0];
+
+        }
         /// <summary>
         /// A method which searches the graph for the maximum path.
         /// Maximum path is defined by a path which reaches the bottom of the input triangle.
         /// This method is based on recursive DFS search for a graph.
         /// </summary>
         /// <param name="node">The node which we are currently at. The initial one is the top of the triangle input.</param>
-        /// <param name="visited">A list which contains all the visited nodes</param>
         /// <param name="paths">A list which contains the current path which is being explored.</param>
         /// <param name="savePath">A list of node lists which are the maximum paths found</param>
-        public void SearchMaxPaths(Node node, List<Node> visited, List<Node> paths, List<List<Node>> savePath)
+        public void SearchMaxPaths(Node node, List<Node> paths, List<List<Node>> savePath)
         {
-            bool isVisited = visited.Find(currentNode => currentNode.id == node.id) != null;
-            if (isVisited) { return; }
-            visited.Add(node);
+            if (node == null)
+            {
+                return;
+            }
+
             paths.Add(node);
             if (node.neighbors.Count > 0)
             {
-                node.neighbors.ForEach(currentNode => SearchMaxPaths(currentNode, visited, paths, savePath));
+                node.neighbors.ForEach(currentNode => SearchMaxPaths(currentNode, paths, savePath));
                 //When returning from the search remove this node from path, to make place for the new path nodes
                 paths.Remove(node);
             }

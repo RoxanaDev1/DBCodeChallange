@@ -10,10 +10,11 @@ namespace Solution
             string fileLocation = args.Length > 0 ? args[0] : "./Solution/src/input/input2.txt";
             List<Node[]> inputMatrix = Utils.CreateInputMatrix(fileLocation);
 
-            DirectedGraph myGraph = new DirectedGraph(inputMatrix);
+            DirectedGraph myGraph = new DirectedGraph();
+            myGraph.BuildGraph(inputMatrix);
 
             List<List<Node>> foundPaths = new List<List<Node>>();
-            myGraph.SearchMaxPaths(myGraph.nodes[0], new List<Node>(), new List<Node>(), foundPaths);
+            myGraph.SearchMaxPaths(myGraph.getRootNode(), new List<Node>(), foundPaths);
 
             decimal maxSum = Utils.GetMaxSum(foundPaths);
 
