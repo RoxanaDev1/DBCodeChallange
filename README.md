@@ -2,6 +2,11 @@
 
 ## Introduction
 
+The solution is built in 2 projects:
+
+1. Solution - Where the code for solving the problem is.
+2. Solution.Tests - This project contains the tests for the code written in Solution.
+
 The program contains of 3 main components:
 
 1. Program.cs - The main file which runs the alg.
@@ -10,17 +15,17 @@ The program contains of 3 main components:
 
 ## How to run
 
-This project is built with vscode.
+This project is built/run with vscode.
 
 Run the following command:
 
-`dotnet restore`
+`dotnet restore` //This will build both of the projects
 
-`dotnet run <FilePath>`
+`dotnet run --project Solution <FilePath>` //Run the project with a given path to a file
 
 or
 
-`dotnet run` if file is added to input folder, and the path in the code is updated to your file.
+`dotnet run --project Solution` //If file is added to input folder, and the path in the code is updated to your file.
 
 ## Solution components
 

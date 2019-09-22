@@ -7,7 +7,7 @@ namespace Solution
     {
         static void Main(string[] args)
         {
-            string fileLocation = args.Length > 0 ? args[0] : "./src/input/input1.txt";
+            string fileLocation = args.Length > 0 ? args[0] : "./Solution/src/input/input1.txt";
             List<Node[]> inputMatrix = Utils.CreateInputMatrix(fileLocation);
 
             DirectedGraph myGraph = new DirectedGraph(inputMatrix);
