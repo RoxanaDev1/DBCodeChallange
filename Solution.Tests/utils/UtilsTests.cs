@@ -97,6 +97,53 @@ namespace Solution.Tests
     }
 
     [TestClass]
+    public class isValidInputMatrix_UtilsTests
+    {
+        [TestMethod]
+        public void isValidInputMatrix_ReturnsTrueForValidMatrix()
+        {
+            List<Node[]> inputMatrix = new List<Node[]>{
+                new Node[]{new Node(0)},
+                new Node[]{new Node(5), new Node(6)},
+                new Node[]{new Node(10), new Node(20), new Node(30)}};
+            Assert.IsTrue(Utils.isValidInputMatrix(inputMatrix));
+        }
+
+        [TestMethod]
+        public void isValidInputMatrix_ReturnsTrueForValidEmptyMatrix()
+        {
+            List<Node[]> inputMatrix = new List<Node[]>();
+            Assert.IsTrue(Utils.isValidInputMatrix(inputMatrix));
+        }
+
+        [TestMethod]
+        public void isValidInputMatrix_ReturnsTrueForValidOneLineMatrix()
+        {
+            List<Node[]> inputMatrix = new List<Node[]>{
+                new Node[]{new Node(0)}};
+            Assert.IsTrue(Utils.isValidInputMatrix(inputMatrix));
+        }
+
+        [TestMethod]
+        public void isValidInputMatrix_ReturnsFalseForMultipleLineInvalidMatrix()
+        {
+            List<Node[]> inputMatrix = new List<Node[]>{
+                new Node[]{new Node(0)},
+                new Node[]{new Node(5), new Node(6)},
+                new Node[]{new Node(10), new Node(20), new Node(30), new Node(30)}};
+            Assert.IsFalse(Utils.isValidInputMatrix(inputMatrix));
+        }
+
+        [TestMethod]
+        public void isValidInputMatrix_ReturnsFalseForSingleLineInvalidMatrix()
+        {
+            List<Node[]> inputMatrix = new List<Node[]>{
+                new Node[]{new Node(0), new Node(0), new Node(0)}};
+            Assert.IsFalse(Utils.isValidInputMatrix(inputMatrix));
+        }
+    }
+
+    [TestClass]
     public class GetNodeArray_UtilsTests
     {
         [TestMethod]

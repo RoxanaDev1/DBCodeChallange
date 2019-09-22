@@ -49,6 +49,29 @@ public static class Utils
     }
 
     /// <summary>
+    /// Validates that an input matrix has a triangle structure, where each line has one more element comparing to previous line.
+    /// </summary>
+    /// <param name="inputMatrix">A list of node arrays describing the input</param>
+    /// <returns>
+    /// A boolean: true for success and false for failure.
+    /// </returns>
+    public static bool isValidInputMatrix(List<Node[]> inputMatrix)
+    {
+        bool isValid = true;
+        int i = 1;
+        inputMatrix.ForEach(line =>
+        {
+            isValid = line.Length == i;
+            if (!isValid)
+            {
+                return;
+            }
+            i++;
+        });
+        return isValid;
+    }
+
+    /// <summary>
     /// Builds a node array from a line of string values.
     /// </summary>
     /// <param name="line">A line from the triangle containing numbers as strings.</param>
