@@ -27,6 +27,10 @@ or
 
 `dotnet run --project Solution` //If file is added to input folder, and the path in the code is updated to your file.
 
+Running the tests:
+
+`dotnet test`
+
 ## Solution components
 
 In order to solve this I have implemented 2 main classes:
@@ -57,15 +61,23 @@ The triangle input is translated into a 2D matrix of nodes. The reason for creat
 Note - Processing of the input will throw exceptions on: empty input, file not found ot none number input.
 Note - I assumed that all numbers given would be integers, but with few changes those can be decimals as well.
 
-2. Create the graph, while removing cases where (for example) for an even parent there is an even child in the triangle.
+2. Create the graph.
 
 Once such a matrix is in place, it is very easy to scan it and build for every node the list of neighbors using the rule where one parent has 2 children, as described in page 2.
-During the build of the graph invalid neighbors will not be added, there is no need for extra conditions on the search.
+During the build of the graph invalid neighbors will not be added.
 
 3. Search the graph and find paths.
 
 The search is using depth first search, as we would like to reach deep to the last line given. The search would contain a path, which is the current path we are discovering. Each time a node is discovered it is added, and each time we reach a dead end of the recursive function returns - a node is removed. The happy path is when reaching a node which has the attribute "isLast". This path will be then added to the list of discovered paths.
+The algorithm usually uses a list of visited nodes, in our case if this list is added some of the paths might be dropped, as nodes can have more then one parent which can cause that the node was already visited by a previous parent.
 
 4. Process the paths and get the one with maximum sum.
 
 Using some util functions for list manipulation for finding the sum and path of the returned found paths.
+
+## Possible Improvements
+
+1. I assumed that numbers would be integers, the program can be changed to handle also decimals.
+2. As described in the problem example a node can have up 2 children, this can also be changed to have a const which describes the amount of neighbors. For example it can be 3.
+3. I covered the majority of things in the code with the tests, I think there can be still some extra added.
+4. I could also use a list of list of nodes and not a list of array of nodes - this way I could write more for each rather then using the good old for loop.
